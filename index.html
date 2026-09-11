@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngLoom | تعلّم الإنجليزية بطلاقة ويسر</title>
+    <meta name="description" content="منصة EngLoom لتعلم اللغة الإنجليزية: قواعد، مفردات، محادثات يومية ونصائح لتقوية مهاراتك بطريقة مبسطة.">
+    <style>
+        :root {
+            --primary-color: #2b6cb0;
+            --secondary-color: #2d3748;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #4a5568;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2b6cb0, #4299e1);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Articles Grid */
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-tag {
+            background-color: #ebf8ff;
+            color: var(--primary-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .card-title {
+            margin: 0.8rem 0;
+            font-size: 1.2rem;
+        }
+
+        .card-title a {
+            text-decoration: none;
+            color: var(--secondary-color);
+        }
+
+        .card-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #718096;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+
+        .sidebar-widget {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar-widget ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-widget ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-widget ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .sidebar-widget ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Eng<span>Loom</span></a>
+            <ul class="nav-links">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">القواعد (Grammar)</a></li>
+                <li><a href="#">المفردات (Vocabulary)</a></li>
+                <li><a href="#">المحادثات (Conversations)</a></li>
+                <li><a href="#">نصائح التعلم</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>مرحباً بك في EngLoom</h1>
+        <p>واحتك الأولى لإتقان اللغة الإنجليزية خطوة بخطوة عبر دروس مبسطة ومحتوى حصري.</p>
+    </section>
+
+    <!-- Main Content Layout -->
+    <div class="container">
+        <!-- Main Posts Area -->
+        <main>
+            <h2 class="section-title">أحدث المقالات والدروس</h2>
+            <div class="articles-grid">
+
+                <!-- Article Card 1 -->
+                <article class="card">
+                    <div class="card-body">
+                        <span class="card-tag">القواعد</span>
+                        <h3 class="card-title"><a href="#">الفرق بين الماضي البسيط والماضي التام في الإنجليزية</a></h3>
+                        <p class="card-text">شرح شامل ومبسط مع الأمثلة لتوضيح الفروقات وكيفية الاستخدام الصحيح في الجمل.</p>
+                    </div>
+                </article>
+
+                <!-- Article Card 2 -->
+                <article class="card">
+                    <div class="card-body">
+                        <span class="card-tag">المحادثة</span>
+                        <h3 class="card-title"><a href="#">كيف تعرف بنفسك بثقة في مقابلة العمل؟</a></h3>
+                        <p class="card-text">أهم الجمل والتعابير الإنجليزية الأساسية التي تحتاجها للتعريف بنفسك باحترافية.</p>
+                    </div>
+                </article>
+
+                <!-- Article Card 3 -->
+                <article class="card">
+                    <div class="card-body">
+                        <span class="card-tag">المفردات</span>
+                        <h3 class="card-title"><a href="#">أهم 20 مصطلحاً مجازياً (Idioms) تستخدم يومياً</a></h3>
+                        <p class="card-text">تعلم المصطلحات اليومية التي يستخدمها المتحدثون الأصليون لتجعل تحدثك أكثر طبيعية.</p>
+                    </div>
+                </article>
+
+                <!-- Article Card 4 -->
+                <article class="card">
+                    <div class="card-body">
+                        <span class="card-tag">نصائح</span>
+                        <h3 class="card-title"><a href="#">خطة يومية من 15 دقيقة لتحسين مهارة الاستماع</a></h3>
+                        <p class="card-text">خطوات عمل نقية تساعدك على التطور في فهم الإنجليزية السريعة بأسلوب مريح.</p>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>عن EngLoom</h3>
+                <p style="font-size: 0.9rem; color: #718096;">نحن منصة تعليمية تهدف إلى تقديم دروس وموارد مجانية عالية الجودة لمساعدتك في إتقان اللغة الإنجليزية وتطوير مهاراتك الشفهية والكتابية.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>أقسام متكررة</h3>
+                <ul>
+                    <li><a href="#">شرح قواعد الأزمنة</a></li>
+                    <li><a href="#">مصطلحات إدارة الأعمال</a></li>
+                    <li><a href="#">حوارات المطار والمطاعم</a></li>
+                    <li><a href="#">كيف تفكر بالإنجليزية؟</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer (ضروري لأدسنس) -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 EngLoom. جميع الحقوق محفوظة.</p>
+            <ul class="footer-links">
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+                <li><a href="#">سياسة الخصوصية</a></li>
+                <li><a href="#">شروط الاستخدام</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
