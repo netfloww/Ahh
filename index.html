@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>EngLoom | تعلم اللغة الإنجليزية بطلاقة</title>
+    <meta name="description" content="منصة EngLoom لتعلم اللغة الإنجليزية: قواعد، مفردات، محادثات، نصائح تعلم، اختبارات تفاعلية، وتصحيح الأخطاء الشائعة.">
+    <!-- خط عربي حديث ومريح للعين -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --dark: #0f172a;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- الهيدر والقائمة --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            direction: ltr; /* ضمان قراءة الاسم Eng ثم Loom */
+        }
+
+        .logo span {
+            color: var(--dark);
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* قائمة الكمبيوتر */
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+        }
+
+        .desktop-nav a {
+            font-weight: 500;
+            font-size: 0.88rem;
+            color: var(--text);
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--primary);
+        }
+
+        /* زر قائمة الموبايل */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            color: var(--dark);
+        }
+
+        .menu-toggle svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+        }
+
+        /* قائمة الموبايل المنسدلة */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            animation: slideDown 0.25s ease-out forwards;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.65rem 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            color: var(--text);
+            transition: background 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- الهيرو (Banner) --- */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: #ffffff;
+            padding: 3rem 1.25rem 2.5rem 1.25rem;
+            text-align: center;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .hero-inner {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 0.85rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- قسم عرض الأقسام الرئيسي في بداية الموقع --- */
+        .categories-section {
+            max-width: 1140px;
+            margin: 2.5rem auto 1rem auto;
+            padding: 0 1.25rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+
+        .category-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.1rem 0.75rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .category-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .category-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* --- الهيكل الرئيسي --- */
+        .container {
+            max-width: 1140px;
+            margin: 2rem auto 0 auto;
+            padding: 0 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--dark);
+            position: relative;
+            padding-right: 0.85rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            bottom: 15%;
+            width: 4px;
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* --- المقالات (Cards) --- */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tag {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+        }
+
+        .read-time {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title a:hover {
+            color: var(--primary);
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* --- الشريط الجانبي (Sidebar) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+        }
+
+        .widget-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .widget-about p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .widget-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .widget-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .widget-links a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* --- الفوتر (Footer) --- */
+        footer {
+            background-color: var(--dark);
+            color: #94a3b8;
+            margin-top: 4rem;
+            padding: 2.5rem 1.25rem 1.5rem 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+            width: 100%;
+            padding-top: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        /* --- التجاوب مع الموبايل والتابلت --- */
+        @media (max-width: 991px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero {
+                padding: 2.5rem 1rem 2rem 1rem;
+                border-radius: 0 0 16px 16px;
+            }
+            .hero h1 {
+                font-size: 1.65rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر والقائمة -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                Eng<span>Loom</span>
+                <span class="logo-dot"></span>
+            </a>
+
+            <!-- روابط الكمبيوتر -->
+            <nav class="desktop-nav">
+                <a href="#" class="active">الرئيسية</a>
+                <a href="#">القواعد</a>
+                <a href="#">المفردات</a>
+                <a href="#">الأخطاء الشائعة</a>
+                <a href="#">الصوتيات والنطق</a>
+                <a href="#">الاختبارات</a>
+                <a href="#">نصائح التعلم</a>
+                <a href="#">المحادثة</a>
+            </nav>
+
+            <!-- زر قائمة الموبايل -->
+            <button class="menu-toggle" id="menuToggle" aria-label="قائمة التصفح">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- القائمة المنسدلة للموبايل -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#">القواعد (Grammar)</a></li>
+                <li><a href="#">المفردات (Vocabulary)</a></li>
+                <li><a href="#">الأخطاء الشائعة (Mistakes)</a></li>
+                <li><a href="#">الصوتيات والنطق (Pronunciation)</a></li>
+                <li><a href="#">الاختبارات التفاعلية (Quizzes)</a></li>
+                <li><a href="#">نصائح التعلم (Learning Tips)</a></li>
+                <li><a href="#">المحادثة (Conversations)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- الهيرو (Banner) -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-badge">تعلم الإنجليزية بأسلوب حديث</span>
+            <h1>طريقك السريع لإتقان اللغة الإنجليزية</h1>
+            <p>دروس مبسطة، نصائح مجربة، اختبارات تفاعلية، وتصحيح الأخطاء الشائعة لتصل إلى الطلاقة بثقة.</p>
+        </div>
+    </section>
+
+    <!-- أقسام الموقع في البداية لسهولة الوصول -->
+    <section class="categories-section">
+        <div class="section-header">
+            <h2 class="section-title">تصفح أقسام المنصة</h2>
+        </div>
+        <div class="categories-grid">
+            
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#eff6ff; color:#2563eb;">📚</div>
+                <span class="category-title">القواعد</span>
+            </a>
+
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#f0fdf4; color:#16a34a;">🔤</div>
+                <span class="category-title">المفردات</span>
+            </a>
+
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#fef2f2; color:#dc2626;">❌</div>
+                <span class="category-title">أخطاء شائعة</span>
+            </a>
+
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#faf5ff; color:#9333ea;">🎙️</div>
+                <span class="category-title">الصوتيات والنطق</span>
+            </a>
+
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#fffbeb; color:#d97706;">📝</div>
+                <span class="category-title">الاختبارات</span>
+            </a>
+
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#ecfdf5; color:#059669;">💡</div>
+                <span class="category-title">نصائح التعلم</span>
+            </a>
+
+            <a href="#" class="category-card">
+                <div class="category-icon" style="background:#f0f9ff; color:#0284c7;">🗣️</div>
+                <span class="category-title">المحادثة</span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <!-- قسم المقالات والدروس -->
+        <main>
+            <div class="section-header">
+                <h2 class="section-title">أحدث الدروس والنصائح</h2>
+            </div>
+
+            <div class="posts-grid">
+
+                <!-- درس 1 -->
+                <article class="card">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="tag" style="background:#dcfce7; color:#15803d;">نصائح التعلم</span>
+                            <span class="read-time">قراءة 5 دقائق</span>
+                        </div>
+                        <h3 class="card-title"><a href="#">خطة عمل من 15 دقيقة يومياً للتفكير بالإنجليزية مباشرة</a></h3>
+                        <p class="card-excerpt">استراتيجية التوقف عن الترجمة الحرفية في عقلك والبدء في التحدث بطلاقة وسرعة وبشكل طبيعي.</p>
+                        <div class="card-footer">
+                            <span>اقرأ النصائح</span>
+                            <span>←</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- درس 2 -->
+                <article class="card">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="tag" style="background:#fef3c7; color:#d97706;">اختبار تفاعلي</span>
+                            <span class="read-time">5 دقائق</span>
+                        </div>
+                        <h3 class="card-title"><a href="#">اختبار تحديد المستوى السريع في الأزمنة (Grammar Quiz)</a></h3>
+                        <p class="card-excerpt">اختبر نفسك الآن في 10 أسئلة تفاعلية لتحديد مدى إتقانك لأهم القواعد مع إظهار النتيجة فوراً.</p>
+                        <div class="card-footer">
+                            <span>ابدأ الاختبار الآن</span>
+                            <span>←</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- درس 3 -->
+                <article class="card">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="tag" style="background:#fee2e2; color:#dc2626;">أخطاء شائعة</span>
+                            <span class="read-time">قراءة 3 دقائق</span>
+                        </div>
+                        <h3 class="card-title"><a href="#">الفرق بين Say و Tell والتفادي الحرفي لأخطاء الترجمة</a></h3>
+                        <p class="card-excerpt">توقف عن الخلط بينهما! تعرف على القاعدة البسيطة لتحديد الكلمة المناسبة لكل موقف بصورة صحيحة.</p>
+                        <div class="card-footer">
+                            <span>تصحيح الخطأ</span>
+                            <span>←</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- درس 4 -->
+                <article class="card">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="tag" style="background:#f3e8ff; color:#7e22ce;">الصوتيات والنطق</span>
+                            <span class="read-time">قراءة 4 دقائق</span>
+                        </div>
+                        <h3 class="card-title"><a href="#">قواعد الحروف الصامتة (Silent Letters) وكيف تنطقها صح</a></h3>
+                        <p class="card-excerpt">دليل شامل للحروف التي تُكتب ولا تُنطق مثل K في Knife و B في Doubt لتبدو كمتحدث أصلي.</p>
+                        <div class="card-footer">
+                            <span>اقرأ الدرس</span>
+                            <span>←</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <!-- الشريط الجانبي -->
+        <aside class="sidebar">
+            <div class="widget widget-about">
+                <h3 class="widget-title">عن منصة EngLoom</h3>
+                <p>منصة تعليمية تهدف إلى تقديم دروس وموارد مجانية موثوقة واختبارات تفاعلية لمساعدتك في إتقان الإنجليزية وتطوير مهاراتك.</p>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title">أقسام سريعة</h3>
+                <div class="widget-links">
+                    <a href="#"><span>كيف تكتسب اللغة بدون ملل؟</span> <span>←</span></a>
+                    <a href="#"><span>اختبارات تحديد المستوى</span> <span>←</span></a>
+                    <a href="#"><span>أبرز 10 أخطاء بالترجمة</span> <span>←</span></a>
+                    <a href="#"><span>سر النطق الأمريكي الصحيح</span> <span>←</span></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="#">من نحو</a>
+                <a href="#">اتصل بنا</a>
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">شروط الاستخدام</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 EngLoom. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <!-- جافاسكريبت لفتح وإغلاق قائمة الموبايل -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
